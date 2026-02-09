@@ -6,12 +6,12 @@
 
 :root {
   /* Elite Dark Mode Palette - Premium & Modern */
-  --background: 222 84% 5%;
-  /* #020617 */
+  --background: 222 84% 8%;
+  /* #050a1f - Slightly lighter navy */
   --foreground: 210 40% 98%;
   /* #F8FAFC */
 
-  --card: 222 84% 7%;
+  --card: 222 84% 12%;
   --card-foreground: 210 40% 98%;
 
   --popover: 222 84% 5%;
@@ -47,10 +47,10 @@
 
 .dark {
   /* Keeping dark class for compatibility, defaults to same palette */
-  --background: 222 84% 5%;
+  --background: 222 84% 8%;
   --foreground: 210 40% 98%;
   --primary: 229 52% 48%;
-  --card: 222 84% 7%;
+  --card: 222 84% 12%;
   --border: 222 47% 15%;
 }
 
