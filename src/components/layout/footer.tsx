@@ -56,7 +56,7 @@ export function Footer() {
                                     <a href="tel:+34630449626" className="text-white text-sm font-bold hover:text-secondary transition-colors">
                                         +34 630 449 626
                                     </a>
-                                    <span className="text-xs text-white/60">Disponible 24/7</span>
+                                    <span className="text-xs text-white/60">Reserva previa 24h</span>
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">

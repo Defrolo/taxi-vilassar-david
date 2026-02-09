@@ -8,7 +8,7 @@ const contactCards = [
     {
         title: "Llamada Directa",
         value: "+34 630 449 626",
-        subtitle: "Disponible 24/7",
+        subtitle: "Con reserva previa de 24h",
         href: "tel:+34630449626",
         icon: Phone,
         color: "bg-blue-500/20 text-blue-400"
@@ -48,7 +48,7 @@ export function ContactSection() {
                         ¿Necesitas un <span className="text-secondary italic">Taxi ahora?</span>
                     </h2>
                     <p className="text-muted-foreground text-lg">
-                        Estamos disponibles las 24 horas para atender tus solicitudes de transporte. Contacta por el medio que prefieras.
+                        Estamos disponibles para atender tus solicitudes de transporte. Te recomendamos reservar con 24 horas de antelación.
                     </p>
                 </div>
 

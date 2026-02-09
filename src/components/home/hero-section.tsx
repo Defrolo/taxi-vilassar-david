@@ -19,7 +19,7 @@ export function HeroSection() {
             >
                 <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none text-primary drop-shadow-sm">
                     Taxi en <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-800 to-primary">Vilassar de Mar</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">Vilassar de Mar</span>
                 </h1>
 
                 <p className="text-xl md:text-2xl font-medium text-primary/80 max-w-3xl mx-auto leading-relaxed">
@@ -82,7 +82,7 @@ export function HeroSection() {
                     </div>
                     <h3 className="text-xl font-bold text-primary mb-2">Todo El Maresme</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                        Llegamos a cualquier punto de la comarca, hospitales y aeropuertos las 24 horas.
+                        Llegamos a cualquier punto de la comarca, hospitales y aeropuertos con reserva previa de 24h.
                     </p>
                 </GlassCard>
             </motion.div>

@@ -3,20 +3,13 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { GlassCard } from "@/components/ui/glass-card"
-import { BadgeCheck, Globe, Star, Users } from "lucide-react"
-
-const languages = [
-    { name: "Español", flag: "https://flagcdn.com/w40/es.png" },
-    { name: "Catalán", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/40px-Flag_of_Catalonia.svg.png" },
-    { name: "Inglés", flag: "https://flagcdn.com/w40/gb.png" },
-    { name: "Francés", flag: "https://flagcdn.com/w40/fr.png" }
-]
+import { BadgeCheck, Clock, Sparkles, Star } from "lucide-react"
 
 const stats = [
     { label: "Años de Experiencia", value: "10+", icon: Star },
-    { label: "Viajes Realizados", value: "50k+", icon: Globe },
-    { label: "Clientes Felices", value: "100%", icon: Users },
-    { label: "Seguridad Garantizada", value: "Max", icon: BadgeCheck }
+    { label: "Puntualidad Especialista", value: "Asegurada", icon: Clock },
+    { label: "Vehículo Higienizado", value: "Garantizado", icon: Sparkles },
+    { label: "Seguridad Máxima", value: "100%", icon: BadgeCheck }
 ]
 
 export function InfoSection() {
@@ -42,13 +35,13 @@ export function InfoSection() {
                                 <GlassCard key={stat.label} className="p-6 text-center group">
                                     <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
                                     <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
-                                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">{stat.label}</div>
                                 </GlassCard>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right side: Vehicle info & Languages */}
+                    {/* Right side: Vehicle info */}
                     <div className="lg:w-1/2 space-y-8">
                         <div className="relative rounded-3xl overflow-hidden border border-primary/20 aspect-video">
                             <Image
@@ -63,28 +56,6 @@ export function InfoSection() {
                                 <p className="text-zinc-100 text-sm md:text-base font-bold leading-relaxed drop-shadow-sm line-clamp-2 md:line-clamp-none">Toyota Prius blanco: cómodo, espacioso e impecable.</p>
                             </div>
                         </div>
-
-                        <GlassCard className="p-8">
-                            <h4 className="text-primary font-bold text-xl mb-6 flex items-center gap-3">
-                                <Globe className="text-secondary w-6 h-6" />
-                                Idiomas Disponibles
-                            </h4>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                                {languages.map((lang) => (
-                                    <div key={lang.name} className="flex flex-col items-center gap-2 group">
-                                        <div className="w-12 h-8 relative rounded-sm overflow-hidden border border-white/10 group-hover:scale-110 transition-all duration-300">
-                                            <Image
-                                                src={lang.flag}
-                                                alt={lang.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                        <span className="text-xs text-muted-foreground font-medium">{lang.name}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </GlassCard>
                     </div>
                 </div>
             </div>

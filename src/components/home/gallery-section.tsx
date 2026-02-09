@@ -68,16 +68,9 @@ export function GallerySection() {
 
                             <div className="absolute bottom-0 left-0 p-6 md:p-10 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <h4 className="text-xl md:text-2xl font-black text-white mb-2 md:mb-3 group-hover:text-secondary transition-colors leading-tight">{photo.title}</h4>
-                                <p className="text-sm md:text-base text-zinc-100 mb-6 md:mb-8 opacity-0 group-hover:opacity-100 transition-opacity delay-100 font-medium leading-relaxed line-clamp-2 md:line-clamp-none">
+                                <p className="text-sm md:text-base text-zinc-100 mb-0 opacity-0 group-hover:opacity-100 transition-opacity delay-100 font-medium leading-relaxed line-clamp-2 md:line-clamp-none">
                                     {photo.description}
                                 </p>
-                                <a
-                                    href={`https://wa.me/34630449626?text=${encodeURIComponent(photo.whatsappMessage)}`}
-                                    className="inline-flex items-center gap-3 bg-whatsapp text-white px-6 md:px-8 py-3 md:py-4 h-12 md:h-14 rounded-full font-black text-base md:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:scale-105 transition-all w-full sm:w-auto justify-center"
-                                >
-                                    <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
-                                    Reservar por WhatsApp
-                                </a>
                             </div>
                         </motion.div>
                     ))}

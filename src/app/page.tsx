@@ -5,7 +5,6 @@ import { InfoSection } from "@/components/home/info-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
 import { GridBackground } from "@/components/ui/grid-background";
-import { FloatingActions } from "@/components/ui/floating-actions";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
     <main className="min-h-screen relative flex flex-col">
       <JsonLd />
       <GridBackground />
-      <FloatingActions />
       <HeroSection />
       <ServicesSection />
       <GallerySection />

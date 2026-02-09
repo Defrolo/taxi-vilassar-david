@@ -24,6 +24,7 @@ export const viewport: Viewport = {
 
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { GridBackground } from "@/components/ui/grid-background";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col font-sans selection:bg-primary selection:text-background`}
         suppressHydrationWarning
       >
+        <GridBackground />
         <Header />
         <div className="flex-1">
           {children}

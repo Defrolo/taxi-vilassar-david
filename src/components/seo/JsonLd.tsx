@@ -18,14 +18,14 @@ export function JsonLd() {
                 "@type": "TaxiService",
                 "@id": `${siteConfig.url}/#service`,
                 "name": "Taxi Vilassar de Mar - David",
-                "description": "Servicio de taxi profesional con 10 años de experiencia. Especialista en traslados al Aeropuerto de Barcelona y servicios 24h en Vilassar de Mar y el Maresme.",
+                "description": "Servicio de taxi profesional con 10 años de experiencia. Especialista en traslados al Aeropuerto de Barcelona y servicios bajo reserva en Vilassar de Mar y el Maresme.",
                 "url": siteConfig.url,
                 "telephone": "+34630449626",
                 "provider": {
                     "@type": "LocalBusiness",
                     "name": "Taxi David Vilassar",
                     "image": `${siteConfig.url}${siteConfig.ogImage}`,
-                    "telePhone": "+34630449626",
+                    "telephone": "+34630449626",
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": "Vilassar de Mar",
@@ -53,8 +53,8 @@ export function JsonLd() {
                                 "Saturday",
                                 "Sunday"
                             ],
-                            "opens": "00:00",
-                            "closes": "23:59"
+                            "opens": "06:00",
+                            "closes": "23:00"
                         }
                     ]
                 },
@@ -91,7 +91,7 @@ export function JsonLd() {
                             "@type": "Offer",
                             "itemOffered": {
                                 "@type": "Service",
-                                "name": "Servicio de Taxi 24h"
+                                "name": "Servicio de Taxi Bajo Reserva"
                             }
                         }
                     ]

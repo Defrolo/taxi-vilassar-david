@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { X, MessageCircle, Calendar, MapPin } from "lucide-react"
 import { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/ui/button"
 
 interface Service {
     title: string
@@ -25,16 +25,24 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
     const handleWhatsAppRedirect = () => {
         let message = service.whatsappMessage
 
-        // Replace placeholders if they exist, or append information
+        // Clean replacement: only replace if values exist
         if (route) {
-            message = message.replace("[origen]", route).replace("[origen] hasta [destino]", route)
+            message = message.replace(/\[origen\]|\[origen\] hasta \[destino\]/g, route)
         }
         if (dateTime) {
-            message = message.replace("[día y hora]", dateTime).replace("[día] a las [hora]", dateTime).replace("[hora]", dateTime).replace("[día]", dateTime)
+            message = message.replace(/\[día y hora\]|\[día\] a las \[hora\]|\[hora\]|\[día\]/g, dateTime)
         }
 
-        // Final message construction if placeholders weren't perfectly replaced
-        const finalMessage = `${message}\n\n📍 Trayecto: ${route || 'Por definir'}\n⏰ Fecha/Hora: ${dateTime || 'Por definir'}`
+        // Remove any remaining placeholders [anything]
+        message = message.replace(/\[.*?\]/g, '...')
+
+        // Final message construction
+        let finalMessage = message
+        if (route || dateTime) {
+            finalMessage += `\n\n📌 Detalles adicionales:`
+            if (route) finalMessage += `\n📍 Trayecto: ${route}`
+            if (dateTime) finalMessage += `\n⏰ Fecha/Hora: ${dateTime}`
+        }
 
         const whatsappUrl = `https://wa.me/34630449626?text=${encodeURIComponent(finalMessage)}`
         window.open(whatsappUrl, "_blank")
@@ -69,7 +77,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                             Reserva: {service.title}
                                         </h3>
                                         <p className="text-muted-foreground text-sm">
-                                            Completa los detalles para tu mensaje de WhatsApp.
+                                            Completa los detalles opcionales para tu mensaje.
                                         </p>
                                     </div>
                                     <button
@@ -91,7 +99,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                             id="route"
                                             type="text"
                                             placeholder="Ej: Vilassar a Aeropuerto"
-                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all"
+                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all font-medium"
                                             value={route}
                                             onChange={(e) => setRoute(e.target.value)}
                                         />
@@ -107,7 +115,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                             id="dateTime"
                                             type="text"
                                             placeholder="Ej: Mañana a las 10:00"
-                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all"
+                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all font-medium"
                                             value={dateTime}
                                             onChange={(e) => setDateTime(e.target.value)}
                                         />
@@ -116,10 +124,10 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                     {/* Action Button */}
                                     <Button
                                         onClick={handleWhatsAppRedirect}
-                                        className="w-full py-6 text-lg font-bold flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp/90 border-none rounded-xl"
+                                        className="w-full py-6 text-lg font-black flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp/90 border-none rounded-xl shadow-lg shadow-whatsapp/20"
                                     >
                                         <MessageCircle className="w-6 h-6 fill-current" />
-                                        Enviar WhatsApp
+                                        Confirmar Reserva
                                     </Button>
 
                                     <p className="text-center text-xs text-muted-foreground italic">

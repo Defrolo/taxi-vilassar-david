@@ -15,6 +15,13 @@ const navLinks = [
     { name: "Contacto", href: "#contacto" },
 ]
 
+const languages = [
+    { name: "ES", flag: "https://flagcdn.com/w40/es.png", fullName: "Español" },
+    { name: "CA", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/40px-Flag_of_Catalonia.svg.png", fullName: "Català" },
+    { name: "EN", flag: "https://flagcdn.com/w40/gb.png", fullName: "English" },
+    { name: "FR", flag: "https://flagcdn.com/w40/fr.png", fullName: "Français" }
+]
+
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
@@ -32,28 +39,61 @@ export function Header() {
             className={cn(
                 "fixed top-0 left-0 w-full z-50 transition-all duration-500",
                 scrolled
-                    ? "bg-primary shadow-lg py-3"
-                    : "bg-transparent py-6"
+                    ? "bg-background/95 backdrop-blur-md shadow-lg"
+                    : "bg-transparent"
             )}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
+            {/* Top Bar */}
+            <div className={cn(
+                "border-b transition-all duration-500 py-2",
+                scrolled
+                    ? "border-primary/5 bg-primary/5 hidden md:block"
+                    : "border-white/10 bg-black/20"
+            )}>
+                <div className="container mx-auto px-6 flex justify-end gap-6 items-center">
+                    <div className="flex items-center gap-4">
+                        {languages.map((lang) => (
+                            <div key={lang.name} className="flex items-center gap-1.5 group cursor-pointer">
+                                <div className="w-5 h-3.5 relative rounded-[2px] overflow-hidden border border-white/10 group-hover:scale-110 transition-transform">
+                                    <img
+                                        src={lang.flag}
+                                        alt={lang.fullName}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <span className={cn(
+                                    "text-[10px] font-black tracking-wider transition-colors",
+                                    scrolled ? "text-primary/60 group-hover:text-primary" : "text-white/60 group-hover:text-white"
+                                )}>
+                                    {lang.name}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className={cn(
+                "container mx-auto px-6 flex items-center justify-between transition-all duration-500",
+                scrolled ? "py-3" : "py-6"
+            )}>
                 <Link href="/" className="flex items-center gap-3 group">
                     <div className={cn(
                         "h-10 w-10 rounded-lg flex items-center justify-center transition-all",
-                        scrolled ? "bg-white text-primary" : "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.5)]"
+                        scrolled ? "bg-primary text-white" : "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.5)]"
                     )}>
                         <Car className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col">
                         <span className={cn(
-                            "text-xl font-bold tracking-tight leading-none transition-colors",
-                            scrolled ? "text-white" : "text-primary"
+                            "text-xl font-black tracking-tight leading-none transition-colors",
+                            scrolled ? "text-primary" : "text-primary"
                         )}>
-                            Taxi <span className={scrolled ? "text-secondary" : "text-primary"}>Vilassar de Mar</span>
+                            Taxi <span className="text-secondary italic">Vilassar de Mar</span>
                         </span>
                         <span className={cn(
-                            "text-xs font-semibold uppercase tracking-widest mt-1",
-                            scrolled ? "text-white/80" : "text-muted-foreground"
+                            "text-xs font-bold uppercase tracking-[0.2em] mt-1",
+                            scrolled ? "text-primary/60" : "text-muted-foreground"
                         )}>
                             David
                         </span>
@@ -67,35 +107,32 @@ export function Header() {
                             key={link.name}
                             href={link.href}
                             className={cn(
-                                "text-base font-extrabold transition-colors relative group",
-                                scrolled ? "text-white hover:text-secondary" : "text-primary hover:text-secondary"
+                                "text-sm font-black uppercase tracking-widest transition-colors relative group",
+                                scrolled ? "text-primary/80 hover:text-primary" : "text-primary hover:text-primary"
                             )}
                         >
                             {link.name}
-                            <span className={cn(
-                                "absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full",
-                                scrolled ? "bg-secondary" : "bg-primary"
-                            )} />
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full" />
                         </Link>
                     ))}
                     <a
-                        href={`tel:${siteConfig.links.whatsapp.split('me/')[1]}`}
+                        href={`tel:+34630449626`}
                         className={cn(
-                            "flex items-center gap-2 px-8 py-3 rounded-full text-base font-black transition-all",
+                            "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-black transition-all",
                             scrolled
-                                ? "bg-secondary text-primary hover:bg-white"
-                                : "bg-primary text-white hover:bg-primary/90 shadow-xl scale-110 ml-4"
+                                ? "bg-primary text-white hover:bg-primary/90"
+                                : "bg-primary text-white hover:bg-primary/90 shadow-xl"
                         )}
                     >
-                        <Phone className="w-5 h-5 fill-current" />
-                        Llamar a David
+                        <Phone className="w-4 h-4 fill-current" />
+                        Llamar ahora
                     </a>
                 </nav>
 
                 <button
                     className={cn(
                         "md:hidden transition-colors p-2 rounded-lg",
-                        scrolled ? "text-white hover:bg-white/10" : "text-primary hover:bg-primary/5"
+                        scrolled ? "text-primary hover:bg-primary/5" : "text-primary hover:bg-primary/5"
                     )}
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
@@ -111,34 +148,50 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-b border-primary/10 overflow-hidden"
+                        className="md:hidden bg-background/98 backdrop-blur-xl border-b border-primary/10 overflow-hidden"
                     >
-                        <div className="container mx-auto px-6 py-12 flex flex-col gap-8">
+                        <div className="container mx-auto px-6 py-10 flex flex-col gap-6">
+                            {/* Mobile Languages */}
+                            <div className="flex justify-center gap-6 pb-6 border-b border-primary/5">
+                                {languages.map((lang) => (
+                                    <div key={lang.name} className="flex flex-col items-center gap-2">
+                                        <div className="w-10 h-6 relative rounded-sm overflow-hidden border border-primary/10">
+                                            <img
+                                                src={lang.flag}
+                                                alt={lang.fullName}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                        <span className="text-[10px] font-bold text-primary/60">{lang.name}</span>
+                                    </div>
+                                ))}
+                            </div>
+
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-2xl font-black text-primary border-b border-primary/5 pb-4 transition-colors"
+                                    className="text-xl font-black text-primary border-b border-primary/5 pb-4 transition-colors"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <a
                                 href={siteConfig.links.whatsapp}
-                                className="bg-whatsapp text-white text-center py-5 rounded-2xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
+                                className="bg-whatsapp text-white text-center py-4 rounded-xl font-black text-lg shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
                                 onClick={() => setIsOpen(false)}
                             >
                                 <MessageCircle className="w-6 h-6" />
-                                Reservar por WhatsApp
+                                WhatsApp
                             </a>
                             <a
                                 href="tel:+34630449626"
-                                className="bg-primary text-white text-center py-5 rounded-2xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
+                                className="bg-primary text-white text-center py-4 rounded-xl font-black text-lg shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
                                 onClick={() => setIsOpen(false)}
                             >
                                 <Phone className="w-6 h-6 fill-current" />
-                                Llamar a David
+                                Llamar ahora
                             </a>
                         </div>
                     </motion.div>

@@ -13,7 +13,7 @@ const faqs = [
     },
     {
         question: "¿Tiene silla para niños?",
-        answer: "No disponemos de silla propia en el vehículo, pero puede aportar la suya y yo mismo me encargaré de instalarla de forma segura."
+        answer: "No disponemos de silla propia en el vehículo, pero puede aportar la suya y yo mismo me encargaré de instalarla de forma segura. Además, yo mismo se la entrego en el lugar que usted me diga."
     },
     {
         question: "¿Se puede reservar con días de antelación?",

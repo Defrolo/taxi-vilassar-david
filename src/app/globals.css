@@ -5,38 +5,38 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* SaaS Premium Light Theme - Matching Client Colors */
-  --background: 0 0% 98%;
-  /* #F9F9F9 */
-  --foreground: 222 47% 11%;
-  /* #111827 */
+  /* Elite Dark Mode Palette - Premium & Modern */
+  --background: 222 84% 5%;
+  /* #020617 */
+  --foreground: 210 40% 98%;
+  /* #F8FAFC */
 
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card: 222 84% 7%;
+  --card-foreground: 210 40% 98%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover: 222 84% 5%;
+  --popover-foreground: 210 40% 98%;
 
-  /* Primary Blue: #2E3F8F (HSL: 229, 51%, 37%) */
-  --primary: 229 51% 37%;
+  /* Primary Blue - Adjusted for Dark Mode: #3B52BA (HSL: 229, 52%, 48%) */
+  --primary: 229 52% 48%;
   --primary-foreground: 210 40% 98%;
 
   /* Secondary/Accent Yellow: #FFD700 (HSL: 51, 100%, 50%) */
   --secondary: 51 100% 50%;
   --secondary-foreground: 222 47% 11%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 222 47% 15%;
+  --muted-foreground: 215 20% 65%;
 
   --accent: 51 100% 50%;
   --accent-foreground: 222 47% 11%;
 
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 229 51% 37%;
+  --border: 222 47% 15%;
+  --input: 222 47% 15%;
+  --ring: 229 52% 48%;
 
   /* WhatsApp Green: #25D366 (HSL: 142, 70%, 49%) */
   --whatsapp: 142 70% 49%;
@@ -46,27 +46,12 @@
 }
 
 .dark {
-  /* Optional dark mode with same palette */
-  --background: 222 47% 11%;
-  --foreground: 213 31% 91%;
-  --card: 222 47% 13%;
-  --card-foreground: 213 31% 91%;
-  --popover: 222 47% 11%;
-  --popover-foreground: 215 20.2% 65.1%;
-  --primary: 229 51% 50%;
-  /* Lighter blue for dark mode */
-  --primary-foreground: 222 47% 11%;
-  --secondary: 51 100% 50%;
-  --secondary-foreground: 224 71% 4%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 216 34% 17%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 216 34% 17%;
-  --input: 216 34% 17%;
-  --ring: 51 100% 50%;
+  /* Keeping dark class for compatibility, defaults to same palette */
+  --background: 222 84% 5%;
+  --foreground: 210 40% 98%;
+  --primary: 229 52% 48%;
+  --card: 222 84% 7%;
+  --border: 222 47% 15%;
 }
 
 @theme inline {

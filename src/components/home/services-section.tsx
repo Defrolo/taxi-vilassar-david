@@ -51,7 +51,7 @@ const services = [
     },
     {
         title: "Servicio de Espera",
-        description: "Especialistas en visitas médicas con servicio de espera y retorno para su total tranquilidad.",
+        description: "Para todos sus trayectos contamos con servicio de espera y retorno para su mayor tranquilidad.",
         icon: Clock,
         whatsappMessage: "Hola David! Me gustaría contratar tu **servicio de espera** y retorno para [destino] el día [día] a las [hora]."
     }
@@ -95,9 +95,16 @@ export function ServicesSection() {
                                         <div className="h-16 w-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                                             <service.icon className="w-8 h-8" />
                                         </div>
-                                        <div className="h-12 w-12 rounded-full bg-whatsapp/20 flex items-center justify-center text-whatsapp group-hover:opacity-100 transition-opacity">
+                                        <a
+                                            href={`https://wa.me/34630449626?text=${encodeURIComponent(service.whatsappMessage.replace(/\[.*?\]/g, '...'))}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="h-12 w-12 rounded-full bg-whatsapp/20 flex items-center justify-center text-whatsapp hover:bg-whatsapp hover:text-white transition-all shadow-sm hover:shadow-whatsapp/20 active:scale-95"
+                                            title="Reserva rápida por WhatsApp"
+                                        >
                                             <MessageCircle className="w-6 h-6 fill-current" />
-                                        </div>
+                                        </a>
                                     </div>
                                     <h3 className="text-2xl font-black text-primary mb-4 leading-tight">{service.title}</h3>
                                     <p className="text-primary/80 leading-relaxed text-base font-medium">

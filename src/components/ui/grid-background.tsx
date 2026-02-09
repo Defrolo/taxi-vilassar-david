@@ -3,11 +3,11 @@ export function GridBackground() {
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-background pointer-events-none">
             {/* Minimal Grid */}
             <div
-                className="absolute inset-0 opacity-[0.05]"
+                className="absolute inset-0 opacity-[0.03]"
                 style={{
                     backgroundImage: `
-            linear-gradient(to right, #000 1px, transparent 1px),
-            linear-gradient(to bottom, #000 1px, transparent 1px)
+            linear-gradient(to right, #fff 1px, transparent 1px),
+            linear-gradient(to bottom, #fff 1px, transparent 1px)
           `,
                     backgroundSize: '32px 32px'
                 }}
