@@ -25,7 +25,7 @@ export function GallerySection() {
             whatsappMessage: "Hola David! ✈️ Necesito un taxi para el **Aeropuerto**."
         },
         {
-            src: "/images/hospital.jpg",
+            src: "/images/hospital-bellvitge.jpg",
             alt: "Servicio de Taxi a Hospitales",
             title: t('gallery.items.hospital.title'),
             description: t('gallery.items.hospital.description'),
