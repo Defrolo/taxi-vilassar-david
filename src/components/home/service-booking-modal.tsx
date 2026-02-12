@@ -68,30 +68,30 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="bg-card w-full max-w-lg rounded-3xl border border-primary/20 shadow-2xl overflow-hidden pointer-events-auto"
+                            className="bg-card w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden pointer-events-auto"
                         >
                             <div className="p-8">
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
-                                        <h3 className="text-2xl font-bold text-primary mb-1">
+                                        <h3 className="text-2xl font-black text-white mb-1 tracking-tight">
                                             Reserva: {service.title}
                                         </h3>
-                                        <p className="text-muted-foreground text-sm">
+                                        <p className="text-zinc-400 text-sm font-medium">
                                             Completa los detalles opcionales para tu mensaje.
                                         </p>
                                     </div>
                                     <button
                                         onClick={onClose}
-                                        className="p-2 hover:bg-primary/10 rounded-full transition-colors"
+                                        className="p-2 hover:bg-white/5 rounded-full transition-colors"
                                     >
-                                        <X className="w-6 h-6 text-muted-foreground" />
+                                        <X className="w-6 h-6 text-zinc-500" />
                                     </button>
                                 </div>
 
                                 <div className="space-y-6">
                                     {/* Route Input */}
                                     <div className="space-y-2">
-                                        <label htmlFor="route" className="text-sm font-semibold text-primary/80 flex items-center gap-2">
+                                        <label htmlFor="route" className="text-sm font-black text-primary uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_8px_rgba(0,242,255,0.4)]">
                                             <MapPin className="w-4 h-4 text-secondary" />
                                             ¿Cuál es el trayecto?
                                         </label>
@@ -99,7 +99,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                             id="route"
                                             type="text"
                                             placeholder="Ej: Vilassar a Aeropuerto"
-                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all font-medium"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium placeholder:text-zinc-600"
                                             value={route}
                                             onChange={(e) => setRoute(e.target.value)}
                                         />
@@ -107,7 +107,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
 
                                     {/* Date/Time Input */}
                                     <div className="space-y-2">
-                                        <label htmlFor="dateTime" className="text-sm font-semibold text-primary/80 flex items-center gap-2">
+                                        <label htmlFor="dateTime" className="text-sm font-black text-primary uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_8px_rgba(0,242,255,0.4)]">
                                             <Calendar className="w-4 h-4 text-secondary" />
                                             ¿Para qué día y hora?
                                         </label>
@@ -115,7 +115,7 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                             id="dateTime"
                                             type="text"
                                             placeholder="Ej: Mañana a las 10:00"
-                                            className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all font-medium"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium placeholder:text-zinc-600"
                                             value={dateTime}
                                             onChange={(e) => setDateTime(e.target.value)}
                                         />
@@ -124,13 +124,13 @@ export function ServiceBookingModal({ isOpen, onClose, service }: ServiceBooking
                                     {/* Action Button */}
                                     <Button
                                         onClick={handleWhatsAppRedirect}
-                                        className="w-full py-6 text-lg font-black flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp/90 border-none rounded-xl shadow-lg shadow-whatsapp/20"
+                                        className="w-full py-6 text-lg font-black flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp/90 border-none rounded-xl shadow-lg shadow-whatsapp/20 transition-all hover:-translate-y-1 active:scale-95 text-white"
                                     >
                                         <MessageCircle className="w-6 h-6 fill-current" />
                                         Confirmar Reserva
                                     </Button>
 
-                                    <p className="text-center text-xs text-muted-foreground italic">
+                                    <p className="text-center text-xs text-zinc-500 font-bold uppercase tracking-wider">
                                         Se abrirá WhatsApp con un mensaje personalizado.
                                     </p>
                                 </div>

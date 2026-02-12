@@ -93,6 +93,13 @@ export function JsonLd() {
                                 "@type": "Service",
                                 "name": "Servicio de Taxi Bajo Reserva"
                             }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Traslados a Hospitales (Bellvitge, Can Ruti, Mataró)"
+                            }
                         }
                     ]
                 }

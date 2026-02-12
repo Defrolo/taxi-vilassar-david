@@ -3,48 +3,52 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { MessageCircle } from "lucide-react"
-
-const photos = [
-    {
-        src: "/images/taxi.jpg",
-        alt: "Taxi David - Vehículo Toyota Prius",
-        title: "Nuestro Vehículo",
-        description: "Comodidad y seguridad en cada trayecto.",
-        whatsappMessage: "Hola David! Me gustaría reservar un servicio con tu **coche híbrido premium** para el día [día] a las [hora]."
-    },
-    {
-        src: "/images/aeropuerto.jpg",
-        alt: "Servicio de Taxi al Aeropuerto",
-        title: "Traslados al Aeropuerto",
-        description: "Puntualidad para tus vuelos nacionales e internacionales.",
-        whatsappMessage: "Hola David! ✈️ Necesito un taxi para el **Aeropuerto**. Recogida el [día] a las [hora]. ¿Confirmas disponibilidad? Gracias!"
-    },
-    {
-        src: "/images/hospital.jpg",
-        alt: "Servicio de Taxi a Hospitales",
-        title: "Citas Médicas y Hospitales",
-        description: "Servicio prioritario para traslados sanitarios.",
-        whatsappMessage: "Hola David! Necesito un taxi para un **traslado a Hospital**. Me gustaría reservar el servicio para el día [día] a las [hora]. Gracias!"
-    },
-    {
-        src: "/images/estacion.jpg",
-        alt: "Servicio de Taxi a Estaciones de Tren",
-        title: "Estación de Tren",
-        description: "Conexiones rápidas con estaciones de tren y autobús.",
-        whatsappMessage: "Hola David! Me gustaría reservar un taxi para ir a la **Estación de Tren** el día [día] a las [hora]. Recogida en: [dirección]."
-    }
-]
+import { cn } from "@/lib/utils"
+import { useLanguage } from "@/context/language-context"
 
 export function GallerySection() {
+    const { t } = useLanguage()
+
+    const photos = [
+        {
+            src: "/images/taxi.jpg",
+            alt: "Taxi David - Vehículo Toyota Prius",
+            title: t('gallery.items.taxi.title'),
+            description: t('gallery.items.taxi.description'),
+            whatsappMessage: "Hola David! Me gustaría reservar un servicio con tu **coche híbrido premium**."
+        },
+        {
+            src: "/images/aeropuerto.jpg",
+            alt: "Servicio de Taxi al Aeropuerto",
+            title: t('gallery.items.airport.title'),
+            description: t('gallery.items.airport.description'),
+            whatsappMessage: "Hola David! ✈️ Necesito un taxi para el **Aeropuerto**."
+        },
+        {
+            src: "/images/hospital.jpg",
+            alt: "Servicio de Taxi a Hospitales",
+            title: t('gallery.items.hospital.title'),
+            description: t('gallery.items.hospital.description'),
+            whatsappMessage: "Hola David! Necesito un taxi para un **traslado a Hospital**."
+        },
+        {
+            src: "/images/estacion.jpg",
+            alt: "Servicio de Taxi a Estaciones de Tren",
+            title: t('gallery.items.station.title'),
+            description: t('gallery.items.station.description'),
+            whatsappMessage: "Hola David! Me gustaría reservar un taxi para ir a la **Estación de Tren**."
+        }
+    ]
+
     return (
         <section id="galeria" className="py-24 bg-background">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-primary leading-tight">
-                        Nuestro Servicio en <span className="text-secondary italic">Imágenes</span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                        {t('gallery.title_prefix')} <span className="text-secondary tracking-tighter italic drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">{t('gallery.title_highlight')}</span>
                     </h2>
-                    <p className="text-muted-foreground text-lg">
-                        Conozca el vehículo y los destinos más frecuentes de nuestro servicio en Vilassar de Mar.
+                    <p className="text-zinc-400 text-lg font-medium">
+                        {t('gallery.description')}
                     </p>
                 </div>
 
@@ -56,13 +60,16 @@ export function GallerySection() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="group relative h-[400px] overflow-hidden rounded-2xl border border-primary/10"
+                            className="group relative h-[400px] overflow-hidden rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl"
                         >
                             <Image
                                 src={photo.src}
                                 alt={photo.alt}
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                className={cn(
+                                    "object-cover transition-transform duration-700 group-hover:scale-110",
+                                    photo.title === t('gallery.items.hospital.title') ? "object-[center_30%]" : "object-center"
+                                )}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
@@ -77,8 +84,8 @@ export function GallerySection() {
                 </div>
 
                 <div className="mt-16 text-center">
-                    <p className="text-primary font-bold bg-primary/5 border border-primary/10 rounded-full py-3 px-8 inline-block">
-                        Nuestro vehículo cuenta con capacidad para 4 pasajeros y amplio maletero.
+                    <p className="text-white font-bold bg-white/5 border border-white/10 rounded-full py-3 px-8 inline-block shadow-lg">
+                        {t('gallery.vehicle_info')}
                     </p>
                 </div>
             </div>

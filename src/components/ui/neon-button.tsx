@@ -28,8 +28,10 @@ export const NeonButton = forwardRef<HTMLButtonElement, NeonButtonProps>(
                     variant === "outline" && "border border-primary text-primary hover:bg-primary/10",
                     variant === "ghost" && "hover:bg-accent hover:text-accent-foreground",
 
-                    // Glow Effect (Only for primary and outline usually, but sticking to primary for strong glow)
-                    glow && variant === "primary" && "shadow-[0_0_20px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_30px_hsl(var(--primary)/0.7)] hover:-translate-y-0.5",
+                    // Glow Effect
+                    glow && variant === "primary" && "shadow-[0_0_20px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_35px_hsl(var(--primary)/0.6)] hover:-translate-y-1",
+                    glow && variant === "secondary" && "shadow-[0_0_20px_hsl(var(--secondary)/0.3)] hover:shadow-[0_0_35px_hsl(var(--secondary)/0.5)] hover:-translate-y-1",
+                    glow && variant === "outline" && "hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)] hover:-translate-y-1",
 
                     className
                 )}

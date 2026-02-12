@@ -5,63 +5,65 @@ import { motion } from "framer-motion"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Plane, Clock, ShieldCheck, Map as MapIcon, MessageCircle, Globe, Building2, Ship } from "lucide-react"
 import { ServiceBookingModal } from "./service-booking-modal"
-
-const services = [
-    {
-        title: "Transporte Urbano",
-        description: "Viajes dentro de Vilassar de Mar y El Maresme con rapidez y eficiencia. Llegamos a cualquier punto en el menor tiempo posible.",
-        icon: MapIcon,
-        whatsappMessage: "Hola David 👋! Me gustaría solicitar un taxi para un trayecto en **Vilassar de Mar / Maresme**. Por favor, dime si hay disponibilidad para [día y hora]."
-    },
-    {
-        title: "Traslado Aeropuerto",
-        description: "Servicio puntual al Aeropuerto de Barcelona-El Prat. Seguimiento de vuelos para recogidas sin esperas.",
-        icon: Plane,
-        whatsappMessage: "Hola David! ✈️ Necesito un taxi para el **Aeropuerto**. Recogida el [día] a las [hora]. ¿Confirmas disponibilidad? Gracias!"
-    },
-    {
-        title: "Traslados a Puertos",
-        description: "Servicio especializado para traslados a la Terminal de Cruceros del Puerto de Barcelona y puertos deportivos.",
-        icon: Ship,
-        whatsappMessage: "Hola David! 🚢 Necesito un taxi para ir al **Puerto / Terminal de Cruceros**. Recogida el [día] a las [hora]. ¿Confirmas?"
-    },
-    {
-        title: "Servicio Empresas",
-        description: "Soluciones de movilidad para empresas, mutuas y traslados de personal con facturación mensual disponible.",
-        icon: Building2,
-        whatsappMessage: "Hola David! Me gustaría solicitar información para un **servicio de empresa / mutua** para el día [día]. ¿Me contactas?"
-    },
-    {
-        title: "Servicios Ejecutivos",
-        description: "Transporte discreto y profesional para eventos, cenas o traslados corporativos con la máxima seriedad.",
-        icon: ShieldCheck,
-        whatsappMessage: "Hola David! 🌟 Me gustaría solicitar un **servicio ejecutivo / evento** para el día [día] a las [hora]. ¿Me das presupuesto?"
-    },
-    {
-        title: "Servicio Hospital",
-        description: "Traslados seguros y cómodos a hospitales de El Maresme y Barcelona. Puntualidad máxima para sus citas médicas.",
-        icon: Clock,
-        whatsappMessage: "Hola David! Necesito un taxi para ir al **Hospital**. Recogida el [día] a las [hora]. Gracias!"
-    },
-    {
-        title: "Largo Recorrido",
-        description: "Desplazamientos nacionales e internacionales con tarifas cerradas y máxima comodidad en el trayecto.",
-        icon: Globe,
-        whatsappMessage: "Hola David! Me gustaría pedir presupuesto para un **viaje de largo recorrido** desde [origen] hasta [destino]."
-    },
-    {
-        title: "Servicio de Espera",
-        description: "Para todos sus trayectos contamos con servicio de espera y retorno para su mayor tranquilidad.",
-        icon: Clock,
-        whatsappMessage: "Hola David! Me gustaría contratar tu **servicio de espera** y retorno para [destino] el día [día] a las [hora]."
-    }
-]
+import { useLanguage } from "@/context/language-context"
 
 export function ServicesSection() {
-    const [selectedService, setSelectedService] = useState<(typeof services)[0] | null>(null)
+    const { t } = useLanguage()
+    const [selectedService, setSelectedService] = useState<any>(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const handleServiceClick = (service: (typeof services)[0]) => {
+    const services = [
+        {
+            title: t('services.items.urban.title'),
+            description: t('services.items.urban.description'),
+            icon: MapIcon,
+            whatsappMessage: "Hola David 👋! Me gustaría solicitar un taxi para un trayecto en **Vilassar de Mar / Maresme**."
+        },
+        {
+            title: t('services.items.airport.title'),
+            description: t('services.items.airport.description'),
+            icon: Plane,
+            whatsappMessage: "Hola David! ✈️ Necesito un taxi para el **Aeropuerto**."
+        },
+        {
+            title: t('services.items.port.title'),
+            description: t('services.items.port.description'),
+            icon: Ship,
+            whatsappMessage: "Hola David! 🚢 Necesito un taxi para ir al **Puerto / Terminal de Cruceros**."
+        },
+        {
+            title: t('services.items.business.title'),
+            description: t('services.items.business.description'),
+            icon: Building2,
+            whatsappMessage: "Hola David! Me gustaría solicitar información para un **servicio de empresa / mutua**."
+        },
+        {
+            title: t('services.items.executive.title'),
+            description: t('services.items.executive.description'),
+            icon: ShieldCheck,
+            whatsappMessage: "Hola David! 🌟 Me gustaría solicitar un **servicio ejecutivo / evento**."
+        },
+        {
+            title: t('services.items.hospital.title'),
+            description: t('services.items.hospital.description'),
+            icon: Clock,
+            whatsappMessage: "Hola David! Necesito un taxi para ir al **Hospital**."
+        },
+        {
+            title: t('services.items.long_distance.title'),
+            description: t('services.items.long_distance.description'),
+            icon: Globe,
+            whatsappMessage: "Hola David! Me gustaría pedir presupuesto para un **viaje de largo recorrido**."
+        },
+        {
+            title: t('services.items.waiting.title'),
+            description: t('services.items.waiting.description'),
+            icon: Clock,
+            whatsappMessage: "Hola David! Me gustaría contratar tu **servicio de espera** y retorno."
+        }
+    ]
+
+    const handleServiceClick = (service: any) => {
         setSelectedService(service)
         setIsModalOpen(true)
     }
@@ -70,11 +72,11 @@ export function ServicesSection() {
         <section id="servicios" className="py-24 relative overflow-hidden bg-background">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">
-                        Nuestros <span className="text-secondary italic">Servicios</span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">
+                        {t('services.title_prefix')} <span className="text-secondary tracking-tighter italic drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">{t('services.title_highlight')}</span>
                     </h2>
-                    <p className="text-muted-foreground text-lg">
-                        Ofrecemos soluciones de transporte personalizadas para que llegues a tu destino con total tranquilidad.
+                    <p className="text-zinc-400 text-lg font-medium">
+                        {t('services.description')}
                     </p>
                 </div>
 
@@ -96,7 +98,7 @@ export function ServicesSection() {
                                             <service.icon className="w-8 h-8" />
                                         </div>
                                         <a
-                                            href={`https://wa.me/34630449626?text=${encodeURIComponent(service.whatsappMessage.replace(/\[.*?\]/g, '...'))}`}
+                                            href={`https://wa.me/34630449626?text=${encodeURIComponent(service.whatsappMessage)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             onClick={(e) => e.stopPropagation()}

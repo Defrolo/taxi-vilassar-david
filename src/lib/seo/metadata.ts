@@ -15,8 +15,12 @@ export const siteConfig = {
         "taxi Maresme",
         "traslado aeropuerto El Prat",
         "taxi hospital Mataró",
+        "taxi hospital Bellvitge",
+        "taxi hospital Can Ruti",
+        "taxi Barcelona",
         "taxi estación Vilassar de Mar",
         "taxi Vilassar de Dalt",
+        "taxi Cabrils",
         "transporte Maresme"
     ],
     creator: "Taxi David",

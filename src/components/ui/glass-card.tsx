@@ -15,24 +15,22 @@ export function GlassCard({
 }: GlassCardProps) {
 
     const intensityMap = {
-        low: "bg-card/20 backdrop-blur-sm",
-        medium: "bg-card/40 backdrop-blur-md",
-        high: "bg-card/60 backdrop-blur-lg"
+        low: "bg-white/5 backdrop-blur-sm",
+        medium: "bg-white/10 backdrop-blur-md",
+        high: "bg-white/20 backdrop-blur-lg"
     }
 
     return (
         <div
             className={cn(
-                "relative overflow-hidden rounded-2xl border border-primary/10 transition-all duration-300 shadow-sm",
+                "relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 shadow-xl",
                 intensityMap[intensity],
-                "hover:border-primary/30 hover:shadow-md",
-                variant === "neon" && "border-primary/50 hover:shadow-[0_0_25px_hsl(var(--primary)/0.3)]",
+                "hover:border-primary/50 hover:shadow-[0_0_30px_rgba(0,242,255,0.15)]",
+                variant === "neon" && "border-primary/50 shadow-[0_0_25px_hsl(var(--primary)/0.2)]",
                 className
             )}
             {...props}
         >
-            {/* Internal shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             <div className="relative z-10">{children}</div>
         </div>
     )

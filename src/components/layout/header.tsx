@@ -6,25 +6,13 @@ import { Menu, X, Car, Phone, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import { siteConfig } from "@/lib/seo/metadata"
 import { cn } from "@/lib/utils"
-
-const navLinks = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Galería", href: "#galeria" },
-    { name: "Información", href: "#informacion" },
-    { name: "Contacto", href: "#contacto" },
-]
-
-const languages = [
-    { name: "ES", flag: "https://flagcdn.com/w40/es.png", fullName: "Español" },
-    { name: "CA", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/40px-Flag_of_Catalonia.svg.png", fullName: "Català" },
-    { name: "EN", flag: "https://flagcdn.com/w40/gb.png", fullName: "English" },
-    { name: "FR", flag: "https://flagcdn.com/w40/fr.png", fullName: "Français" }
-]
+import { useLanguage } from "@/context/language-context"
+import { Language } from "@/lib/i18n/translations"
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const { language, setLanguage, t } = useLanguage()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,6 +21,21 @@ export function Header() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    const languages: { name: Language; flag: string; fullName: string }[] = [
+        { name: "es", flag: "https://flagcdn.com/w40/es.png", fullName: "Español" },
+        { name: "ca", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/40px-Flag_of_Catalonia.svg.png", fullName: "Català" },
+        { name: "en", flag: "https://flagcdn.com/w40/gb.png", fullName: "English" },
+        { name: "fr", flag: "https://flagcdn.com/w40/fr.png", fullName: "Français" }
+    ]
+
+    const navLinks = [
+        { name: t('nav.home'), href: "#inicio" },
+        { name: t('nav.services'), href: "#servicios" },
+        { name: t('nav.gallery'), href: "#galeria" },
+        { name: t('nav.info'), href: "#informacion" },
+        { name: t('nav.contact'), href: "#contacto" },
+    ]
 
     return (
         <header
@@ -47,14 +50,21 @@ export function Header() {
             <div className={cn(
                 "border-b transition-all duration-500 py-2",
                 scrolled
-                    ? "border-primary/5 bg-primary/5 hidden md:block"
-                    : "border-white/10 bg-black/20"
+                    ? "border-primary/10 bg-white/40 hidden md:block"
+                    : "border-primary/5 bg-primary/5"
             )}>
                 <div className="container mx-auto px-6 flex justify-end gap-6 items-center">
                     <div className="flex items-center gap-4">
                         {languages.map((lang) => (
-                            <div key={lang.name} className="flex items-center gap-1.5 group cursor-pointer">
-                                <div className="w-5 h-3.5 relative rounded-[2px] overflow-hidden border border-white/10 group-hover:scale-110 transition-transform">
+                            <button
+                                key={lang.name}
+                                onClick={() => setLanguage(lang.name)}
+                                className="flex items-center gap-1.5 group cursor-pointer bg-transparent border-none p-0"
+                            >
+                                <div className={cn(
+                                    "w-5 h-3.5 relative rounded-[2px] overflow-hidden border transition-transform",
+                                    language === lang.name ? "border-primary scale-110" : "border-primary/10 group-hover:scale-110"
+                                )}>
                                     <img
                                         src={lang.flag}
                                         alt={lang.fullName}
@@ -62,12 +72,12 @@ export function Header() {
                                     />
                                 </div>
                                 <span className={cn(
-                                    "text-[10px] font-black tracking-wider transition-colors",
-                                    scrolled ? "text-primary/60 group-hover:text-primary" : "text-white/60 group-hover:text-white"
+                                    "text-[10px] font-black tracking-wider transition-colors uppercase",
+                                    language === lang.name ? "text-primary" : "text-primary/60 group-hover:text-primary"
                                 )}>
                                     {lang.name}
                                 </span>
-                            </div>
+                            </button>
                         ))}
                     </div>
                 </div>
@@ -125,7 +135,7 @@ export function Header() {
                         )}
                     >
                         <Phone className="w-4 h-4 fill-current" />
-                        Llamar ahora
+                        {t('nav.call')}
                     </a>
                 </nav>
 
@@ -154,16 +164,26 @@ export function Header() {
                             {/* Mobile Languages */}
                             <div className="flex justify-center gap-6 pb-6 border-b border-primary/5">
                                 {languages.map((lang) => (
-                                    <div key={lang.name} className="flex flex-col items-center gap-2">
-                                        <div className="w-10 h-6 relative rounded-sm overflow-hidden border border-primary/10">
+                                    <button
+                                        key={lang.name}
+                                        onClick={() => setLanguage(lang.name)}
+                                        className="flex flex-col items-center gap-2 bg-transparent border-none p-0"
+                                    >
+                                        <div className={cn(
+                                            "w-10 h-6 relative rounded-sm overflow-hidden border transition-all",
+                                            language === lang.name ? "border-primary ring-2 ring-primary/20" : "border-primary/10"
+                                        )}>
                                             <img
                                                 src={lang.flag}
                                                 alt={lang.fullName}
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
-                                        <span className="text-[10px] font-bold text-primary/60">{lang.name}</span>
-                                    </div>
+                                        <span className={cn(
+                                            "text-[10px] font-bold uppercase",
+                                            language === lang.name ? "text-primary" : "text-primary/60"
+                                        )}>{lang.name}</span>
+                                    </button>
                                 ))}
                             </div>
 
@@ -191,7 +211,7 @@ export function Header() {
                                 onClick={() => setIsOpen(false)}
                             >
                                 <Phone className="w-6 h-6 fill-current" />
-                                Llamar ahora
+                                {t('nav.call')}
                             </a>
                         </div>
                     </motion.div>

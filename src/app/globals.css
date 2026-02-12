@@ -5,53 +5,49 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Elite Dark Mode Palette - Premium & Modern */
-  --background: 222 84% 8%;
-  /* #050a1f - Slightly lighter navy */
+  /* Futuristic Dark/Neon Palette */
+  --background: 230 40% 4%;
+  /* #06080d - Deep space black */
   --foreground: 210 40% 98%;
-  /* #F8FAFC */
 
-  --card: 222 84% 12%;
+  --card: 230 40% 6%;
   --card-foreground: 210 40% 98%;
 
-  --popover: 222 84% 5%;
+  --popover: 230 40% 6%;
   --popover-foreground: 210 40% 98%;
 
-  /* Primary Blue - Adjusted for Dark Mode: #3B52BA (HSL: 229, 52%, 48%) */
-  --primary: 229 52% 48%;
-  --primary-foreground: 210 40% 98%;
+  /* Neon Cyan/Blue: #00f2ff */
+  --primary: 184 100% 50%;
+  --primary-foreground: 184 100% 5%;
 
-  /* Secondary/Accent Yellow: #FFD700 (HSL: 51, 100%, 50%) */
-  --secondary: 51 100% 50%;
-  --secondary-foreground: 222 47% 11%;
+  /* Tech Gold/Yellow: #ffd700 */
+  --secondary: 45 100% 50%;
+  --secondary-foreground: 45 100% 5%;
 
-  --muted: 222 47% 15%;
+  --muted: 230 20% 15%;
   --muted-foreground: 215 20% 65%;
 
-  --accent: 51 100% 50%;
-  --accent-foreground: 222 47% 11%;
+  --accent: 184 100% 50%;
+  --accent-foreground: 184 100% 5%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 222 47% 15%;
-  --input: 222 47% 15%;
-  --ring: 229 52% 48%;
+  --border: 230 20% 12%;
+  --input: 230 20% 12%;
+  --ring: 184 100% 50%;
 
-  /* WhatsApp Green: #25D366 (HSL: 142, 70%, 49%) */
-  --whatsapp: 142 70% 49%;
+  /* WhatsApp Green - Kept vibrant */
+  --whatsapp: 142 70% 45%;
   --whatsapp-foreground: 0 0% 100%;
 
   --radius: 0.75rem;
 }
 
 .dark {
-  /* Keeping dark class for compatibility, defaults to same palette */
-  --background: 222 84% 8%;
+  /* Dark mode is the primary state */
+  --background: 230 40% 4%;
   --foreground: 210 40% 98%;
-  --primary: 229 52% 48%;
-  --card: 222 84% 12%;
-  --border: 222 47% 15%;
 }
 
 @theme inline {
@@ -94,4 +90,16 @@
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
   }
+}
+
+@utility text-glow {
+  text-shadow: 0 0 10px hsla(var(--primary) / 0.5),
+    0 0 20px hsla(var(--primary) / 0.3);
+}
+
+@utility text-glow-strong {
+  text-shadow: 0 0 5px hsla(var(--primary) / 0.8),
+    0 0 10px hsla(var(--primary) / 0.5),
+    0 0 20px hsla(var(--primary) / 0.3),
+    0 0 40px hsla(var(--primary) / 0.1);
 }

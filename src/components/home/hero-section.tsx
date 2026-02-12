@@ -4,12 +4,15 @@ import { motion } from "framer-motion"
 import { NeonButton } from "@/components/ui/neon-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { ArrowRight, Car, Map as MapIcon, Phone } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 export function HeroSection() {
+    const { t } = useLanguage()
+
     return (
         <section id="inicio" className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
             {/* Background Light Source */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[160px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
@@ -18,13 +21,13 @@ export function HeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="max-w-5xl space-y-8 relative z-20"
                 >
-                    <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none text-primary drop-shadow-sm">
-                        Taxi en <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">Vilassar de Mar</span>
+                    <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none text-white drop-shadow-[0_0_25px_rgba(0,242,255,0.5)]">
+                        {t('hero.title_prefix')} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary animate-pulse-slow text-glow-strong filter drop-shadow-[0_0_10px_rgba(0,242,255,0.8)]">{t('hero.title_highlight')}</span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl font-medium text-primary/80 max-w-3xl leading-relaxed">
-                        Taxi David: servicios rápidos, puntuales y seguros en El Maresme, hospitales y aeropuertos. 10 años de experiencia a su servicio.
+                    <p className="text-xl md:text-2xl font-medium text-zinc-400 max-w-3xl leading-relaxed">
+                        {t('hero.description')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
@@ -34,7 +37,7 @@ export function HeroSection() {
                             onClick={() => window.open("https://wa.me/34630449626", "_blank")}
                             aria-label="Reservar taxi por WhatsApp"
                         >
-                            Reservar por WhatsApp
+                            {t('hero.whatsapp_btn')}
                             <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-2" />
                         </NeonButton>
                         <NeonButton
@@ -46,7 +49,7 @@ export function HeroSection() {
                             aria-label="Llamar al taxista David"
                         >
                             <Phone className="mr-3 w-6 h-6 fill-current" />
-                            630 449 626
+                            {t('hero.call_btn')}
                         </NeonButton>
                     </div>
                 </motion.div>
@@ -62,9 +65,9 @@ export function HeroSection() {
                         <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary font-bold">
                             10+
                         </div>
-                        <h3 className="text-xl font-bold text-primary mb-2">Años de Servicio</h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">{t('hero.cards.experience.title')}</h3>
                         <p className="text-muted-foreground leading-relaxed">
-                            Una década de experiencia garantizando traslados seguros en toda la comarca.
+                            {t('hero.cards.experience.desc')}
                         </p>
                     </GlassCard>
 
@@ -72,9 +75,9 @@ export function HeroSection() {
                         <div className="h-12 w-12 rounded-lg bg-secondary/20 flex items-center justify-center mb-4 text-primary">
                             <Car className="w-6 h-6" />
                         </div>
-                        <h3 className="text-xl font-bold text-primary mb-2">Vehículo Premium</h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">{t('hero.cards.vehicle.title')}</h3>
                         <p className="text-muted-foreground leading-relaxed">
-                            Viaja en un Toyota Prius híbrido, limpio, espacioso y respetuoso con el medio ambiente.
+                            {t('hero.cards.vehicle.desc')}
                         </p>
                     </GlassCard>
 
@@ -82,9 +85,9 @@ export function HeroSection() {
                         <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
                             <MapIcon className="w-6 h-6" />
                         </div>
-                        <h3 className="text-xl font-bold text-primary mb-2">Todo El Maresme</h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">{t('hero.cards.coverage.title')}</h3>
                         <p className="text-muted-foreground leading-relaxed">
-                            Llegamos a cualquier punto de la comarca, hospitales y aeropuertos con reserva previa de 24h.
+                            {t('hero.cards.coverage.desc')}
                         </p>
                     </GlassCard>
                 </motion.div>
